@@ -11,10 +11,10 @@ const BasketList = ({ items, deleteItem, editItem }) => {
             <div key={id} className="item">
               <p>{value}</p>
               <div className="btn-container">
-                <button onClick={() => editItem(id)}>
+                <button className="edit-btn" onClick={() => editItem(id)}>
                   <FaEdit />
                 </button>
-                <button onClick={() => deleteItem(id)}>
+                <button className="delete-btn" onClick={() => deleteItem(id)}>
                   <FaTrash />
                 </button>
               </div>

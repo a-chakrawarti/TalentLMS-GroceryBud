@@ -1,9 +1,9 @@
 import React from "react";
 
-const Popup = ({ message }) => {
+const Popup = ({ message, classType }) => {
   return (
     <>
-      <div>{message}</div>
+      <div className={classType}>{message}</div>
     </>
   );
 };

@@ -16,7 +16,8 @@ function App() {
   const [basketList, setBasetList] = useState(initialValue);
   const [popup, setPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
-  const [updateItem, setUpdateItem] = useState(false);
+  // since editID exists: replace with updateItem
+  // const [updateItem, setUpdateItem] = useState(false);
   const [popupClass, setPopupClass] = useState("");
   const [editID, setEditID] = useState(null);
 
@@ -40,8 +41,7 @@ function App() {
       showPopup("Please Enter Value", "error");
 
       // Update the item
-    } else if (inputValue && updateItem) {
-      // console.log("Item updated!");
+    } else if (inputValue && editID) {
       const newBasketList = basketList.map((item) => {
         if (item.id === editID) {
           return { ...item, value: inputValue };
@@ -52,7 +52,6 @@ function App() {
       setBasetList(newBasketList);
       setInputValue("");
       setEditID(null);
-      setUpdateItem(false);
       showPopup("Value Changed", "success");
 
       // Add the item
@@ -84,7 +83,6 @@ function App() {
   const editItem = (id) => {
     console.log("Edit Item");
     const updateItem = basketList.find((item) => id === item.id);
-    setUpdateItem(true);
     setEditID(id);
     setInputValue(updateItem.value);
   };
@@ -116,7 +114,7 @@ function App() {
           <InputForm
             inputValue={inputValue}
             handleChange={handleChange}
-            updateItem={updateItem}
+            updateItem={editID}
             handleSubmit={handleSubmit}
           />
           <BasketList
